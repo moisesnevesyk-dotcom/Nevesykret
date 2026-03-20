@@ -1,3 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nevesykret | Loja Oficial</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{background:#0f172a;color:#fff}
+.container{width:90%;max-width:1100px;margin:auto}
+header{background:#111827;padding:20px 0;border-bottom:1px solid #1f2937}
+.flex{display:flex;justify-content:space-between;align-items:center}
+nav a{color:#ccc;text-decoration:none;margin-left:20px}
+nav a:hover{color:#fff}
+.hero{padding:80px 0;text-align:center}
+.hero h1{font-size:42px;margin-bottom:15px}
+.section{margin-top:60px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;margin-top:30px}
+.card{background:#1e293b;padding:30px;border-radius:10px;text-align:center}
+button{background:#2563eb;border:none;padding:12px 20px;color:#fff;border-radius:6px;font-weight:bold;cursor:pointer}
+button:hover{background:#1d4ed8}
+.cart{margin-top:60px;background:#1e293b;padding:30px;border-radius:10px}
+.cart-item{display:flex;justify-content:space-between;margin-bottom:10px}
+.total{margin-top:20px;font-size:20px}
+.qr-area{text-align:center;margin-top:20px}
+textarea{resize:none}
+footer{background:#111827;text-align:center;padding:30px;margin-top:80px;color:#94a3b8}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container flex">
+<h2>Nevesykret</h2>
+<nav>
+<a href="#produtos">Produtos</a>
+<a href="#carrinho">Carrinho</a>
+</nav>
+</div>
+</header>
+
+<section class="hero container">
+<h1>Bem-vindo à Nevesykret</h1>
+<p>Keys Steam e serviços de otimização com entrega rápida.</p>
+</section>
+
+<section id="produtos" class="container section">
+<h2>Produtos</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>🎮 Key Steam</h3>
+<p>Entrega digital</p>
+<h2>R$ 3,50</h2>
+<button onclick="addToCart('Key Steam',3.50)">Adicionar ao Carrinho</button>
+</div>
+
+<div class="card">
+<h3>⚙️ Driver Pro</h3>
+<p>Atualização completa de drivers</p>
+<h2>R$ 9,90</h2>
+<button onclick="addToCart('Driver Pro',9.90)">Adicionar ao Carrinho</button>
+</div>
+
+<div class="card">
+<h3>🚀 Otimização Completa</h3>
+<p>Máximo desempenho no PC</p>
+<h2>R$ 22,00</h2>
+<button onclick="addToCart('Otimização Completa',22.00)">Adicionar ao Carrinho</button>
+</div>
+
+</div>
+</section>
+
+<section id="carrinho" class="container cart">
+<h2>🛒 Carrinho</h2>
+
+<div id="cartItems"></div>
+
+<div class="total">
+Total: R$ <span id="total">0.00</span>
+</div>
+
+<div class="qr-area">
+<h3>Pagamento via PIX</h3>
+
+<button onclick="finalizarCompra()">Finalizar Compra</button>
+
+<p id="pixStatus" style="margin-top:15px;"></p>
+
+<img id="qrCode" width="200" style="margin-top:15px;" />
+
+<textarea id="pixCode" readonly 
+style="width:100%;margin-top:15px;padding:10px;border-radius:6px;height:90px;">
+</textarea>
+
+</div>
+</section>
+
+<footer>
+© 2026 Nevesykret - Todos os direitos reservados
+</footer>
+
 <script>
 let cart = [];
 let paymentId = null;
@@ -12,7 +118,7 @@ function renderCart(){
   let total = 0;
   cartItems.innerHTML = '';
 
-  cart.forEach((item, index) => {
+  cart.forEach((item) => {
     total += item.price;
     cartItems.innerHTML += `
       <div class="cart-item">
@@ -54,3 +160,6 @@ async function finalizarCompra(){
   document.getElementById("pixStatus").innerText = "Aguardando pagamento...";
 }
 </script>
+
+</body>
+</html>
