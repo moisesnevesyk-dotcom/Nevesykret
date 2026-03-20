@@ -1,4 +1,7 @@
 {
+  "name": "nevesykret",
+  "version": "1.0.0",
+  "type": "module",
   "dependencies": {
     "mercadopago": "^1.5.13"
   }
